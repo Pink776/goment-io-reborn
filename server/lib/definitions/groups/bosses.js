@@ -1564,7 +1564,7 @@ let ares = new LayeredBoss(null, "Ares", "terrestrial", 7, "purple", "terrestria
 ares.addLayer({gun: {
     POSITION: [3.75, 7, 1.2, 8, 0, null, 0],
     PROPERTIES: {
-        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.destroyer, {health: 1.2, damage: 1.1, resist: 1.1, density: 1.5, maxSpeed: 1.25}]),
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.destroyer, {health: 1.2, damage: 1.1, resist: 1.1, density: 1, maxSpeed: 1.25}]),
         TYPE: ["demonchip", { INDEPENDENT: true }],
         AUTOFIRE: true,
         SYNCS_SKILLS: true,
@@ -1573,6 +1573,22 @@ ares.addLayer({gun: {
     },
 }}, false, null, 18);
 ares.addLayer({turret: {
+    POSITION: [10, 8.5, 0, null, 160, 0],
+    TYPE: ["protoSwarmerTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+let aret = new LayeredBoss(null, "Aret", "terrestrial", 7, "white", "terrestrialTrapTurret", 7, 5.5);
+aret.addLayer({gun: {
+    POSITION: [3.75, 7, 1.2, 8, 0, null, 0],
+    PROPERTIES: {
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.machineGun, {health: 0.01, damage: 0.001, resist: 1.1, density: 1, maxSpeed: 1.25}]),
+        TYPE: ["minichip", { INDEPENDENT: true }],
+        AUTOFIRE: true,
+        SYNCS_SKILLS: true,
+        STAT_CALCULATOR: "drone",
+        WAIT_TO_CYCLE: true,
+    },
+}}, false, null, 18);
+aret.addLayer({turret: {
     POSITION: [10, 8.5, 0, null, 160, 0],
     TYPE: ["protoSwarmerTurret", { INDEPENDENT: true }],
 }}, true, 6.5);
@@ -1587,11 +1603,21 @@ gersemi.addLayer({turret: {
     TYPE: ["basicTurret", { INDEPENDENT: true, GUN_STAT_SCALE: {health: 1.8, damage: 1.3} }],
 }}, true, 6.5);
 
+let idose = new LayeredBoss(null, "Idose", "terrestrial", 7, "green", "terrestrialTrapTurret", 7, 5.5);
+idose.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["swarmTurret", { INDEPENDENT: true, GUN_STAT_SCALE: {health: 1.7, damage: 1.2} }],
+}});
+idose.addLayer({turret: {
+    POSITION: [9.5, 7.5, 0, null, 160, 0],
+    TYPE: ["auto4gun", { INDEPENDENT: true, GUN_STAT_SCALE: {health: 1.8, damage: 1.3} }],
+}}, true, 6.5);
+
 let ezekiel = new LayeredBoss(null, "Ezekiel", "terrestrial", 7, "orange", "terrestrialTrapTurret", 7, 5.5);
 ezekiel.addLayer({gun: {
     POSITION: [3.75, 7, 1.2, 8, 0, null, 0],
     PROPERTIES: {
-        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.destroyer, {health: 1.2, damage: 1.1, resist: 1.1, density: 1.5, maxSpeed: 1.25}]),
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.destroyer, {health: 1.2, damage: 1.1, resist: 1.1, density: 1, maxSpeed: 1.25}]),
         TYPE: ["dorito", { COLOR: "orange", INDEPENDENT: true }],
         AUTOFIRE: true,
         SYNCS_SKILLS: true,
@@ -1625,7 +1651,7 @@ let selene = new LayeredBoss(null, "Selene", "terrestrial", 7, "gold", "terrestr
 selene.addLayer({gun: {
     POSITION: [3.75, 7, 1.2, 8, 0, null, 0],
     PROPERTIES: {
-        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.destroyer, {health: 1.2, damage: 1.1, resist: 1.1, density: 1.5, maxSpeed: 1.25}]),
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.destroyer, {health: 1.2, damage: 1.1, resist: 1.1, density: 1, maxSpeed: 1.25}]),
         TYPE: ["summonerDrone", { COLOR: "gold", INDEPENDENT: true }],
         AUTOFIRE: true,
         SYNCS_SKILLS: true,
@@ -1804,6 +1830,696 @@ ragnarok.addLayer({turret: {
     POSITION: [8, 9, 0, null, 160, 0],
     TYPE: "gunnerCruiserTurret",
 }}, true, 4.5);
+//4 layered
+let protoladdo = new LayeredBoss(null, "Protoladdo", "eternal", 13, "white", "baseTrapTurret", 4.5, 3.5, false, {
+    FOV: 1.35,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 25000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 168, 10e6);
+protoladdo.addLayer({gun: {
+    POSITION: [2.25, 3.25, -1.6, 9, 0, null, 0],
+    PROPERTIES: {
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.machineGunner, {speed: 1.25, maxSpeed: 1.25}]),
+        TYPE: ["minichip", {INDEPENDENT: true, DRAW_HEALTH: true, COLOR: 'white'}],
+        AUTOFIRE: true,
+        SYNCS_SKILLS: true,
+    },
+}}, true, null, 40);
+protoladdo.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: "boomerTurret",
+}}, true, 5.5);
+protoladdo.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 4.5);
+protoladdo.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 3.5);
+let protoladda = new LayeredBoss(null, "Protoladda", "eternal", 13, "white", "baseTrapTurret", 4.5, 3.5, false, {
+    FOV: 1.35,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 25000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 168, 10e6);
+protoladda.addLayer({gun: {
+    POSITION: [2.25, 3.25, -1.6, 9, 0, null, 0],
+    PROPERTIES: {
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.machineGunner, {speed: 1.25, maxSpeed: 1.25}]),
+        TYPE: ["minichip", {INDEPENDENT: true, DRAW_HEALTH: true, COLOR: 'white'}],
+        AUTOFIRE: true,
+        SYNCS_SKILLS: true,
+    },
+}}, true, null, 40);
+for (let i = 0; i < 3; i++) {
+protoladda.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: "auto4gun",
+}}, true, 5.5);
+}
+
+let covie = new LayeredBoss(null, "Covie", "eternal", 13, "blue", "baseTrapTurret", 4.5, 3.5, false, {
+    FOV: 1.35,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 25000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 168, 10e6);
+covie.addLayer({gun: {
+    POSITION: [2.25, 3.25, -1.6, 9, 0, null, 0],
+    PROPERTIES: {
+        SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.machineGunner, {speed: 1.25, maxSpeed: 1.25}]),
+        TYPE: ["minichip", {INDEPENDENT: true, DRAW_HEALTH: true, COLOR: 'blue'}],
+        AUTOFIRE: true,
+        SYNCS_SKILLS: true,
+    },
+},
+         POSITION: [2.05, 2.25, -1.6, 9, 0, null, 2],
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([g.drone, g.summoner, g.machineGunner, {speed: 1.25, maxSpeed: 1.25}]),
+                TYPE: ["minichip", {INDEPENDENT: true, DRAW_HEALTH: true, COLOR: 'blue'}],
+                AUTOFIRE: true,
+                SYNCS_SKILLS: true,
+}}, true, null, 40);
+for (let i = 0; i < 3; i++) {
+covie.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret,",
+}}, true, 5.5);
+}
+// New Terrestrials (10 total)
+let apollo = new LayeredBoss(null, "Apollo", "terrestrial", 7, "red", "baseTrapTurret", 7, 5.5);
+apollo.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["autoTankGun", { INDEPENDENT: true, GUN_STAT_SCALE: {health: 1.5, damage: 1.3} }],
+}}, true, 6.5);
+
+let artemis = new LayeredBoss(null, "Artemis", "terrestrial", 7, "cyan", "baseTrapTurret", 7, 5.5);
+artemis.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["auto4gun", { INDEPENDENT: true, GUN_STAT_SCALE: {health: 1.6, damage: 1.2} }],
+}}, true, 6.5);
+
+let hades = new LayeredBoss(null, "Hades", "terrestrial", 7, "darkGrey", "baseTrapTurret", 7, 5.5);
+hades.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["machineTripleTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let poseidon = new LayeredBoss(null, "Poseidon", "terrestrial", 7, "blue", "baseTrapTurret", 7, 5.5);
+poseidon.addLayer({turret: {
+    POSITION: [10, 7.5, 0, null, 160, 0],
+    TYPE: ["twisterTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let athena = new LayeredBoss(null, "Athena", "terrestrial", 7, "yellow", "baseTrapTurret", 7, 5.5);
+athena.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["launcherTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let hermes = new LayeredBoss(null, "Hermes", "terrestrial", 7, "lightGreen", "baseTrapTurret", 7, 5.5);
+hermes.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["skimmerTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let dionysus = new LayeredBoss(null, "Dionysus", "terrestrial", 7, "magenta", "baseTrapTurret", 7, 5.5);
+dionysus.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["swarmerTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let demeter = new LayeredBoss(null, "Demeter", "terrestrial", 7, "green", "baseTrapTurret", 7, 5.5);
+demeter.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["cruiserTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let hephaestus = new LayeredBoss(null, "Hephaestus", "terrestrial", 7, "orange", "baseTrapTurret", 7, 5.5);
+hephaestus.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["rocketeerTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+let aphrodite = new LayeredBoss(null, "Aphrodite", "terrestrial", 7, "pink", "baseTrapTurret", 7, 5.5);
+aphrodite.addLayer({turret: {
+    POSITION: [9, 8, 0, null, 160, 0],
+    TYPE: ["boomerTurret", { INDEPENDENT: true }],
+}}, true, 6.5);
+
+// New Celestials (5 total)
+let uriel = new LayeredBoss(null, "Uriel", "celestial", 9, "gold", "baseTrapTurret", 6.5, 5.5);
+uriel.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 180, 0],
+    TYPE: ["auto4gun", { INDEPENDENT: true, GUN_STAT_SCALE: {health: 1.3, damage: 1.3} }],
+}});
+uriel.addLayer({turret: {
+    POSITION: [10.5, 8, 0, null, 160, 0],
+    TYPE: ["bigauto4gun", { INDEPENDENT: true }],
+}}, true, 6);
+
+let michael = new LayeredBoss(null, "Michael", "celestial", 9, "red", "baseTrapTurret", 6.5, 5.5);
+michael.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 180, 0],
+    TYPE: ["machineTripleTurret", { INDEPENDENT: true }],
+}});
+michael.addLayer({turret: {
+    POSITION: [10.5, 8, 0, null, 160, 0],
+    TYPE: ["launcherTurret", { INDEPENDENT: true }],
+}}, true, 6);
+
+let gabriel = new LayeredBoss(null, "Gabriel", "celestial", 9, "cyan", "baseTrapTurret", 6.5, 5.5);
+gabriel.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 180, 0],
+    TYPE: ["swarmerTurret", { INDEPENDENT: true }],
+}});
+gabriel.addLayer({turret: {
+    POSITION: [10.5, 8, 0, null, 160, 0],
+    TYPE: ["skimmerTurret", { INDEPENDENT: true }],
+}}, true, 6);
+
+let raphael = new LayeredBoss(null, "Raphael", "celestial", 9, "green", "baseTrapTurret", 6.5, 5.5);
+raphael.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 180, 0],
+    TYPE: ["cruiserTurret", { INDEPENDENT: true }],
+}});
+raphael.addLayer({turret: {
+    POSITION: [10.5, 8, 0, null, 160, 0],
+    TYPE: ["twisterTurret", { INDEPENDENT: true }],
+}}, true, 6);
+
+let azrael = new LayeredBoss(null, "Azrael", "celestial", 9, "purple", "baseTrapTurret", 6.5, 5.5);
+azrael.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 180, 0],
+    TYPE: ["rocketeerTurret", { INDEPENDENT: true }],
+}});
+azrael.addLayer({turret: {
+    POSITION: [10.5, 8, 0, null, 160, 0],
+    TYPE: ["boomerTurret", { INDEPENDENT: true }],
+}}, true, 6);
+
+// New Eternals (2 total)
+let omega = new LayeredBoss(null, "Omega", "eternal", 11, "rainbow", "baseTrapTurret", 6, 5.5);
+omega.addLayer({turret: {
+    POSITION: [6.5, 9, 0, null, 160, 0],
+    TYPE: ["bigauto4gun", { INDEPENDENT: true }],
+}});
+omega.addLayer({turret: {
+    POSITION: [6.5, 9, 0, null, 160, 0],
+    TYPE: ["hyperTwisterTurret", { INDEPENDENT: true }],
+}}, true, 4);
+omega.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 160, 0],
+    TYPE: ["autoSmasherLauncherTurret", { INDEPENDENT: true }],
+}}, true, 4);
+
+let sigma = new LayeredBoss(null, "Sigma", "eternal", 11, "teal", "baseTrapTurret", 6, 5.5);
+sigma.addLayer({turret: {
+    POSITION: [6.5, 9, 0, null, 160, 0],
+    TYPE: ["machineTripleTurret", { INDEPENDENT: true }],
+}});
+sigma.addLayer({turret: {
+    POSITION: [6.5, 9, 0, null, 160, 0],
+    TYPE: ["hyperSwarmerTurret", { INDEPENDENT: true }],
+}}, true, 4);
+sigma.addLayer({turret: {
+    POSITION: [8.5, 9, 0, null, 160, 0],
+    TYPE: ["gunnerCruiserTurret", { INDEPENDENT: true }],
+}}, true, 4);
+
+// New 6-layered Eternal
+let infinity = new LayeredBoss(null, "Infinity", "eternal", 13, "veryLightGrey", "baseTrapTurret", 5, 4.5, false, {
+    FOV: 1.2,
+    SPEED: 0.08 * base.SPEED,
+    HEALTH: 50000,
+    DAMAGE: 6 * base.DAMAGE,
+}, 200, 15e6);
+infinity.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: ["auto4gun", { INDEPENDENT: true }],
+}}, true, 5);
+infinity.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: ["bigauto4gun", { INDEPENDENT: true }],
+}}, true, 4.5);
+infinity.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: ["launcherTurret", { INDEPENDENT: true }],
+}}, true, 4);
+infinity.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: ["skimmerTurret", { INDEPENDENT: true }],
+}}, true, 3.5);
+infinity.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: ["twisterTurret", { INDEPENDENT: true }],
+}}, true, 3);
+infinity.addLayer({turret: {
+    POSITION: [5.5, 9, 0, null, 160, 0],
+    TYPE: ["hyperSwarmerTurret", { INDEPENDENT: true }],
+}}, true, 2.5);
+
+// LOVIA - 27-layered eternal boss
+let lovia = new LayeredBoss(null, "Lovia", "eternal", 57, "aqua", "trapTurret", 1, 0.7, false, {
+    FOV: 1,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 4000000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 720, 10e6);
+
+// Layer 1: Skimmer turrets (57 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+
+// Layer 2: Nailgun turrets (55 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 3: Nailgun turrets (53 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 4: Factory turrets (51 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 5: Factory turrets (49 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 6: Factory turrets (47 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 7: Skimmer turrets (45 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+
+// Layer 8: Nailgun turrets (43 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 9: Nailgun turrets (41 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 10: Factory turrets (39 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 11: Factory turrets (37 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 12: Factory turrets (35 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 13: Skimmer turrets (33 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+
+// Layer 14: Nailgun turrets (31 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 15: Nailgun turrets (29 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 16: Factory turrets (27 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 17: Factory turrets (25 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 18: Factory turrets (23 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 19: Skimmer turrets (21 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+
+// Layer 20: Nailgun turrets (19 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 21: Nailgun turrets (17 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 22: Factory turrets (15 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 23: Factory turrets (13 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 24: Factory turrets (11 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "swarmerTurret",
+}}, true, 0.7);
+
+// Layer 25: Skimmer turrets (9 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+
+// Layer 26: Nailgun turrets (7 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+
+// Layer 27: Nailgun turrets (5 sides)
+lovia.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "nailgunTurret",
+}}, true, 0.7);
+//OPP
+let suffer = new LayeredBoss(null, "Suffer", "eternal", 30, "red", "trapTurret", 2.5, 0.7, false, {
+    FOV: 1,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 4000000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 320, 10e6);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "protoSwarmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "protoSwarmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "protoSwarmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "skimmerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "boomerTurret",
+}}, true, 0.7);
+suffer.addLayer({turret: {
+    POSITION: [2.5, 9, 0, null, 160, 0],
+    TYPE: "boomerTurret",
+}}, true, 0.7);
+let addlinator = new LayeredBoss(null, "Addlinator", "eternal", 120, "red", "trapTurret", 1.5, 0.7, false, {
+    FOV: 1.3,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 2180000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 990, 10e6);
+for (let i = 0; i < 60; i++) {
+addlinator.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+}
+//Kistic 
+let kistic = new LayeredBoss(null, "Kistic", "eternal", 100, "yellow", "trapTurret", 2.5, 0.7, false, {
+    FOV: 1.3,
+    SPEED: 0.1 * base.SPEED,
+    HEALTH: 1880000,
+    DAMAGE: 5 * base.DAMAGE,
+}, 990, 10e6);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
+kistic.addLayer({turret: {
+    POSITION: [1, 9, 0, null, 160, 0],
+    TYPE: "autoTankGun",
+}}, true, 0.7);
 
 // Developer Bosses
 Class.taureonCoreBase = {
